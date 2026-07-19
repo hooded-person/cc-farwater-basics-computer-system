@@ -1,0 +1,5 @@
+{
+  [ "list.show_hidden" ] = true,
+  [ "shell.allow_disk_startup" ] = false,
+  [ "motd.path" ] = "/rom/motd.txt:/motd.txt",
+}

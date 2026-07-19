@@ -1,0 +1,99 @@
+{
+    owner = "HoodedKingGreen",
+    auto_restart = {
+        delay = 5,
+        retries = 5,
+        timespan = 5, -- minutes
+    },
+    auto_migrate = true,
+    exists_handle_method = "overwrite", -- overwrite,skip
+    peripherals = {
+        main = {
+            drive_main = "drive_2",
+            drive_assets = "drive_3",
+        },
+        server_room = {
+            player_detector = "playerDetector_0",
+        },
+        computer_room = {
+            center = {
+                computer71 = "computer_22",
+                drive = "drive_1",
+                speaker = "speaker_1",
+                printer = "printer_1",
+            },
+            front = {
+                monitor_left = "monitor_11",
+                monitor_center = "monitor_10",
+                monitor_right = "monitor_12",
+            },
+            left = {
+                monitor_top_right = "monitor_14",
+                monitor_bottom_right = "monitor_15",
+                monitor_bottom_left = "monitor_16",
+                monitor_top_left = "monitor_13",
+            },
+            right = {
+                monitor_left = "monitor_17",
+                monitor_bottom_right = "monitor_18",
+                monitor_top_right = "monitor_19",
+            },
+        },
+        workshop = {
+            assembly_line = {
+                barrel_input = "minecraft:barrel_2",
+                barrel_output = "minecraft:barrel_3",
+                fluid_tank = "create:fluid_tank_0",
+                monitor_tank_contents = "monitor_8",
+            },
+            screens = {
+                monitor_wide = "monitor_9",
+                monitor_graph = "monitor_20",
+            },
+        },
+        logistics = {
+            stockticker = "Create_StockTicker_0",
+            drawers = "storagedrawers:controller_slave_1",
+            bulk = { "create_connected:item_silo_0" },
+        },
+    },
+    data = {
+        prog_telem = {
+            cycleDelay = 1, -- sec/cycle
+            graphs = {
+                ["minecraft:iron_ingot"] = {
+                    monitor = "$.peripherals.computer_room.left.monitor_top_right",
+                    maxEntries = "60/$.data.prog_telem.cycleDelay", -- amount of cycles in 60 sec
+                },
+                total = {
+                    monitor = "$.peripherals.computer_room.front.monitor_center",
+                    maxEntries = "3600/$.data.prog_telem.cycleDelay", -- amount of cycles in 3600 sec (1 hour)
+                }
+            },
+            deltaWindowSize = 50, -- cycles
+            monitor_counts = "$.peripherals.computer_room.front.monitor_left",
+            rates_interval = "m",
+            pinned_rates = {
+                "logistics:minecraft:iron_ingot",
+            },
+        },
+        prog_tracker = {
+            monitor = "$.peripherals.computer_room.right.monitor_top_right",
+        },
+        prog_detector = {
+            logfile = "/logs/players.log",
+            subscribed = "$.owner",
+            excluded = { "$.owner" },
+            -- TODO: implement areas via config instead of the layers definition in detector.lua
+        },
+        run_defrag = {
+            interval = 60, -- minutes
+        },
+        prog_remote_link = {
+            monitor = "$.peripherals.computer_room.right.monitor_bottom_right",
+        },
+    },
+    channels = {
+        control = 302,
+    },
+}
