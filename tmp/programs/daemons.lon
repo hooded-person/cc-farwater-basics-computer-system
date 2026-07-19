@@ -1,0 +1,4 @@
+{
+    auto_feed = "/programs/auto_feed.lua",
+    remote_link = "/programs/remote_link_client.lua",
+}

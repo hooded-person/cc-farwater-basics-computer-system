@@ -1,0 +1,43 @@
+{
+    {
+        name = "Remote Shell",
+        description = "Remote connect to this computer using VSCode",
+        entrypoint = "system/remote.lua",
+    },
+    {
+        name = "Workshop Sequenced Assembly",
+        description = "Recycle items on the workshop assembly line back to the start, for sequenced assembly.",
+        entrypoint = "workshop/sequenced_assembly.lua",
+    },
+    {
+        name = "Workshop Fluid Tank Display",
+        description = "Shows the content of the fluid tank on a monitor",
+        entrypoint = "workshop/fluid_tank.lua",
+    },
+    {
+        name = "Workshop Scrolling Text Display",
+        description = "Shows scrolling text messages",
+        entrypoint = "workshop/scrolling_text.lua",
+    },
+    {
+        name = "Telem data collection",
+        description = "GRAPHS!! Collects data from storage and turns it into graphs",
+        entrypoint = "main/data.lua",
+        confirmKill = true,
+    },
+    {
+        name = "Tracker",
+        description = "Tracks players and shows some basic information about them in the computer room.",
+        entrypoint = "main/tracker.lua",
+    },
+    {
+        name = "Detector",
+        description = "Detects when players enter the base area and logs this",
+        entrypoint = "main/detector.lua",
+    },
+    {
+        name = "Run Defrag",
+        description = "Runs defragmentation at a set interval. Defragmentation moves items from vaults to the drawer system if they have a slot there.",
+        entrypoint = "main/run_defrag.lua",
+    }
+}
